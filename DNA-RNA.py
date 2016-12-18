@@ -57,5 +57,5 @@ proc = subprocess.Popen(['gnuplot','-p'],
 proc.communicate("""
 set xrange [0:10]; set yrange [-2:2]
 plot sin(x)
-pause 4
+pause 40
 """)
