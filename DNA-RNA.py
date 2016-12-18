@@ -3,56 +3,56 @@ import rna
 raw_input("Basic Step")
 import dna
 raw_input("Step 2")
-from sys import argv
-script, filename = argv
+one_sequence = 'actgatcgattgatcgatcgatcg'
+another_sequence   = 'tttagatcgatctttgatc'
+ 
+# here are the five bits of information we described before
+def score_match(subject, query, subject_start, query_start, length):
+    score = 0
+    # for each base in the match
+    for i in range(0,length):
+        # first figure out the matching base from both sequences
+        subject_base = subject[subject_start + i]
+        query_base = query[query_start + i]
+        # then adjust the score up or down depending on 
+        # whether or not they are the same
+        if subject_base == query_base:
+            score = score + 1
+        else:
+            score = score - 1
+    return score
+ 
+# here is the score for the match we were looking at above
+print(score_match(one_sequence, another_sequence, 7, 4, 8))
+ 
+# let's try a few other potential matches
+ 
+# here is the same match but shorter
+print(score_match(one_sequence, another_sequence, 7, 4, 4))
+ 
+# how about a longer match
+print(score_match(one_sequence, another_sequence, 7, 4, 12))
+ 
+# and a random match
+print(score_match(one_sequence, another_sequence, 10, 1, 5))
+raw_input("Step 3")
+def try_all_matches(subject, query, score_limit):
+    for subject_start in range(0,len(subject)):
+        for query_start in range(0,len(query)):
+            for length in range(0,len(query)):
+                if (subject_start + length < len(subject) and query_start + length < len(query)):
+                    score = score_match(subject, query, subject_start, query_start, length)
+                    # only print a line of output if the score is better than some limie
+                    if (score >= score_limit):
+                        print(subject_start, query_start, length, score)
+ 
+try_all_matches(one_sequence, another_sequence, 6)
 
-def translate_dna(sequence):
-
-    codontable = {
-    'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
-    'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
-    'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K',
-    'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',
-    'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L',
-    'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P',
-    'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q',
-    'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R',
-    'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V',
-    'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A',
-    'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E',
-    'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G',
-    'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S',
-    'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L',
-    'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
-    'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
-    }
-    proteinsequence = ''
-    start = sequence.find('ATG')
-    sequencestart = sequence[int(start):]
-    stop = sequencestart.find('TAA')
-    cds = str(sequencestart[:int(stop)+3])
-
-    for n in range(0,len(cds),3):
-        if cds[n:n+3] in codontable:
-            proteinsequence += codontable[cds[n:n+3]]
-            print proteinsequence
-        sequence = ''
-    return proteinsequence
-
-
-header = ''
-sequence = ''
-for line in open(filename):
-    if line[0] == ">":
-        if header != '':
-            print header
-            translate_dna(sequence)
-
-        header = line.strip()
-        sequence = ''
-    else:
-        sequence += line.strip()
-
-print header 
-raw_input("Press Enter to continue...")
-translate_dna(sequence)
+raw_input("Ploting Graph")
+import subprocess
+proc = subprocess.Popen(['gnuplot','-p'], 
+                        shell=True,
+                        stdin=subprocess.PIPE,
+                        )
+proc.stdin.write('set xrange [0:10]; set yrange [-2:2]\n')
+proc.stdin.write('plot sin(x)\n')
