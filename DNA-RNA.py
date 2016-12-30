@@ -1,4 +1,5 @@
 #!/usr/bin/python
+globvar = 0
 import rna
 raw_input("Basic Step")
 import dna
@@ -14,12 +15,17 @@ def score_match(subject, query, subject_start, query_start, length):
         # first figure out the matching base from both sequences
         subject_base = subject[subject_start + i]
         query_base = query[query_start + i]
+        globvar = query_base
         # then adjust the score up or down depending on 
         # whether or not they are the same
         if subject_base == query_base:
             score = score + 1
+            globvar = score
         else:
             score = score - 1
+            globvar = score
+            global test 
+            test = score
     return score
  
 # here is the score for the match we were looking at above
@@ -47,7 +53,7 @@ def try_all_matches(subject, query, score_limit):
                         print(subject_start, query_start, length, score)
  
 try_all_matches(one_sequence, another_sequence, 6)
-
+print(test)
 raw_input("Ploting Graph")
 import subprocess
 proc = subprocess.Popen(['gnuplot','-p'], 
@@ -56,6 +62,6 @@ proc = subprocess.Popen(['gnuplot','-p'],
                         )
 proc.communicate("""
 set xrange [0:10]; set yrange [-2:2]
-plot sin(x)
+plot 4
 pause 40
 """)
