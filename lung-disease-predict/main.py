@@ -2,10 +2,10 @@
 This is a part of the supplementary material uploaded along with 
 the manuscript:
 
-    "Lung Pattern Classification for Interstitial Lung Diseases Using a Deep Convolutional Neural Network"
-    M. Anthimopoulos, S. Christodoulidis, L. Ebner, A. Christe and S. Mougiakakou
-    IEEE Transactions on Medical Imaging (2016)
-    http://dx.doi.org/10.1109/TMI.2016.2535865
+"Lung Pattern Classification for Interstitial Lung Diseases Using a Deep Convolutional Neural Network"
+M. Anthimopoulos, S. Christodoulidis, L. Ebner, A. Christe and S. Mougiakakou
+IEEE Transactions on Medical Imaging (2016)
+http://dx.doi.org/10.1109/TMI.2016.2535865
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,6 +26,8 @@ be found at: https://github.com/intact-project/ild-cnn
 
 import helpers as H
 import cnn_model as CNN
+import sys
+sys.path.append('/opt/ros/hydro/lib/python2.7/dist-packages')
 
 # debug
 from ipdb import set_trace as bp
@@ -46,7 +48,7 @@ train_params = {
      'patience' : args.pat if args.pat else 200,       # Patience parameter for early stoping
      'tolerance': args.tol if args.tol else 1.005,     # Tolerance parameter for early stoping [default: 1.005, checks if > 0.5%]
      'res_alias': args.csv if args.csv else 'res'      # csv results filename alias
-}
+     }
 
 # loading mnist data as example
 (X_train, y_train), (X_val, y_val) = H.load_data()
