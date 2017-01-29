@@ -156,17 +156,17 @@ def plot_stripes(stripes, lung_size):
         len(stripes)
     except:
         stripes = [stripes]
-    
-    
+
     for strip in stripes:
-        plt.figure()
-        #make array representing your lung structure. 
+        #plt.figure()
+        #make array representing your lung structure.
         ## 0 = secretory cells
         ## 1 = ciliated cells
         alternation = strip
         lung = np.zeros((lung_size, lung_size)).astype(int)
         count = 0
         write = 1
+	print lung_size
         for i in range(lung_size):
             if count < alternation:
                 count += 1
