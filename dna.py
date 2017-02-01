@@ -22,6 +22,7 @@ map = {"UUU":"F", "UUC":"F", "UUA":"L", "UUG":"L",
 
 DNA=data[1].strip()
 start = DNA.find('AUG')
+print('DNA Length',len(DNA))
 if start!= -1:
     while start+2 < len(DNA):
         codon = DNA[start:start+3]

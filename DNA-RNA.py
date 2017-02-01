@@ -6,9 +6,9 @@ import dna
 raw_input("Step 2")
 one_sequence = 'actgatcgattgatcgatcgatcg'
 another_sequence   = 'tttagatcgatctttgatc'
- 
-# here are the five bits of information we described before
+ # here are the five bits of information we described before
 def score_match(subject, query, subject_start, query_start, length):
+    # print("Shape and handedness of DNA",subject_start)
     score = 0
     # for each base in the match
     for i in range(0,length):
@@ -43,6 +43,8 @@ print(score_match(one_sequence, another_sequence, 7, 4, 12))
 print(score_match(one_sequence, another_sequence, 10, 1, 5))
 raw_input("Step 3")
 def try_all_matches(subject, query, score_limit):
+    print("Base Pairing",score_limit)
+    print("DNA Grooves",query)
     for subject_start in range(0,len(subject)):
         for query_start in range(0,len(query)):
             for length in range(0,len(query)):
