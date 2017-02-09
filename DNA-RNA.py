@@ -55,15 +55,15 @@ def try_all_matches(subject, query, score_limit):
                         print(subject_start, query_start, length, score)
  
 try_all_matches(one_sequence, another_sequence, 6)
-print(test)
-raw_input("Ploting Graph")
-import subprocess
-proc = subprocess.Popen(['gnuplot','-p'], 
-                        shell=True,
-                        stdin=subprocess.PIPE,
-                        )
-proc.communicate("""
-set xrange [0:10]; set yrange [-2:2]
-plot 4
-pause 40
-""")
+# print(test)
+# raw_input("Ploting Graph")
+# import subprocess
+# proc = subprocess.Popen(['gnuplot','-p'], 
+#                         shell=True,
+#                         stdin=subprocess.PIPE,
+#                         )
+# proc.communicate("""
+# set xrange [0:10]; set yrange [-2:2]
+# plot 4
+# pause 40
+# """)
