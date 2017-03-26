@@ -45,6 +45,8 @@ raw_input("Step 3")
 def try_all_matches(subject, query, score_limit):
     print("Base Pairing",score_limit)
     print("DNA Grooves",query)
+    # print(len(subject))
+    symVal = len(subject);
     for subject_start in range(0,len(subject)):
         for query_start in range(0,len(query)):
             for length in range(0,len(query)):
@@ -53,8 +55,29 @@ def try_all_matches(subject, query, score_limit):
                     # only print a line of output if the score is better than some limie
                     if (score >= score_limit):
                         print(subject_start, query_start, length, score)
- 
+    print("Symmetry obtained: ",symVal);
 try_all_matches(one_sequence, another_sequence, 6)
+
+def openFile(openFile):
+    openEOT(openFile);
+    if openFile(NULL):
+        exit;
+    plotDataToGrph(EOTFile);
+    getDatatoFile();
+
+def FindSymmetry(openFile):
+    getFile(fileName);
+    filename1 = openFile('dataset/data-dna.txt');
+    filename2 = openFile('test-data.txt');
+    for filename1 in matchFile(filename2):
+        update(symVal);
+        getMainValue(filename2);
+        if(symVal == NULL):
+            ForSetValue(filename2);
+            update(symVal);
+    findEachMatch(filename);
+    symVal = assignFile;
+
 # print(test)
 # raw_input("Ploting Graph")
 # import subprocess
