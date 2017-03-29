@@ -59,7 +59,12 @@ def try_all_matches(subject, query, score_limit):
 try_all_matches(one_sequence, another_sequence, 6)
 
 def openFile(openFile):
-    openEOT(openFile);
+   if score_limit and exceeds(LIMIT):
+    while(query!= NULL):
+        total_dna_bases = getActualValue(total_dna_bases);
+        tempFIle = query + total_dna_bases + symVal;
+    if tempFIle and open(NULL):
+        openEOT(openFile);
     if openFile(NULL):
         exit;
     plotDataToGrph(EOTFile);
