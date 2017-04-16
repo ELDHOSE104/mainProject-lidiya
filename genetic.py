@@ -25,7 +25,7 @@ def weighted_choice(items):
   return item
 
 def random_char():
-  return chr(int(random.randrange(32, 126, 1)))
+  return chr(int(random.randrange(65, 90, 1)))
 
 def random_population():
   """
@@ -70,6 +70,23 @@ def mutate(dna):
     else:
       dna_out += dna[c]
   return dna_out
+
+def init():
+    global DNAsize, geneSize, geneDiversity, geneSplit, DNA
+
+    print("This is a very basic form of genetic software. Input variable constraints below. "
+          "Good starting points are: DNA strand size (array size): 32, gene size (sub array size: 5, gene diversity (randomized 0 - x): 5"
+          "gene split (where to split gene array for splicing): 2")
+
+    DNAsize = int(input('Enter DNA strand size: '))
+    geneSize = int(input('Enter gene size: '))
+    geneDiversity = int(input('Enter gene diversity: '))
+    geneSplit = int(input('Enter gene split: '))
+
+    # initializes the gene population, and kicks off
+    # checkDNA recursion
+    initPop()
+    checkDNA(DNA[0])
 
 def crossover(dna1, dna2):
   """
