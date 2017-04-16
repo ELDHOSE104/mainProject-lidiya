@@ -113,6 +113,8 @@ if __name__ == "__main__":
     weighted_population = []
     for individual in population:
       fitness_val = fitness(individual)
+      if generation == 4999:
+        print(fitness_val);
 
       # Generate the (individual,fitness) pair, taking in account whether or
       # not we will accidently divide by zero.
